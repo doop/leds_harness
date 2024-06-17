@@ -468,20 +468,17 @@ void hextri_b_iter(CRGB (*cb)(unsigned char , void *) , void *cbstatic) {
 }
 
 void do_hex() {
-  /*
-  hexring(0,CRGB(2,2,2));
-  hexring(1,CRGB(MAXBRIGHT,0,0));
-  hexring(2,CRGB(0,2,0));
-  hexring(3,CRGB(0,0,2));
-  leds[NUM_LEDS] = CRGB(MAXBRIGHT,0,MAXBRIGHT);
-  leds[NUM_LEDS+1] = CRGB(MAXBRIGHT,0,MAXBRIGHT);
-  */
-  
+
+  // Render the central hexagon, if present
+
+#if (0 == NUM_HEX_LEDS)
+  // do nothing
+#else
   hexring(0,leds[NUM_LEDS-1]);
   hexring(1,leds[NUM_LEDS-1-4]);
   hexring(2,leds[NUM_LEDS-1-8]);
   hexring(3,leds[NUM_LEDS-1-12]);
-  
+#endif
 }
 
 /************************* Button handling *************************/
