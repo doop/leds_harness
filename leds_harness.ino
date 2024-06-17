@@ -379,6 +379,8 @@ const unsigned char hexseg_5[] = { 15,  9,  4,  0, 16, 10,  5, 17, 11, 18, 0xff 
 const unsigned char *hexsegs[] = { hexseg_0, hexseg_1, hexseg_2, hexseg_3, hexseg_4, hexseg_5 };
 const unsigned char hexseg_centre[] = { 6, 13, 26, 30, 23, 10 };
 
+const unsigned char polybius_logo[] = { 1, 6, 10, 12, 13, 14, 16, 20, 22, 24, 25, 26, 28, 29, 33, 0xff}; // (c) Yarnold Heavy Industries
+
 const unsigned char hexseg_level[] = {
   3, 3, 3, 3, 3, 2, 2, 2,
   3, 3, 2, 1, 1, 2, 3, 3,
@@ -467,6 +469,10 @@ void hextri_b_iter(CRGB (*cb)(unsigned char , void *) , void *cbstatic) {
     hexseg_iter(5,cb,cbstatic);
 }
 
+void do_logo() {
+  CRGB logo_color = CRGB(128,7,0);
+  hexlist(polybius_logo, logo_color);
+}
 void do_hex() {
 
   // Render the central hexagon, if present
@@ -478,6 +484,7 @@ void do_hex() {
   hexring(1,leds[NUM_LEDS-1-4]);
   hexring(2,leds[NUM_LEDS-1-8]);
   hexring(3,leds[NUM_LEDS-1-12]);
+  do_logo();
 #endif
 }
 
